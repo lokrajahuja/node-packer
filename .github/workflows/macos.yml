@@ -55,25 +55,25 @@ jobs:
           which rubyc
           rubyc --version
           bundle exec rake
-#       - name: "[Enclose.IO] Create macOS Release"
-#         if: ${{ github.ref == 'refs/heads/master' && success() }}
-#         id: create_macos_release
-#         uses: pmq20/create-release@delete-old-release
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#         with:
-#           tag_name: darwin-x64
-#           release_name: Latest macOS Build
-#           draft: false
-#           prerelease: false
-#           replace_old_tag: true
-#       - name: "[Enclose.IO] Upload macOS Release"
-#         if: ${{ github.ref == 'refs/heads/master' && success() }}
-#         uses: actions/upload-release-asset@v1
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#         with:
-#           upload_url: ${{ steps.create_macos_release.outputs.upload_url }}
-#           asset_path: src/nodec
-#           asset_name: nodec
-#           asset_content_type: application/octet-stream
+      - name: "[Enclose.IO] Create macOS Release"
+        if: ${{ github.ref == 'refs/heads/master' && success() }}
+        id: create_macos_release
+        uses: pmq20/create-release@delete-old-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: darwin-x64
+          release_name: Latest macOS Build
+          draft: false
+          prerelease: false
+          replace_old_tag: true
+      - name: "[Enclose.IO] Upload macOS Release"
+        if: ${{ github.ref == 'refs/heads/master' && success() }}
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_macos_release.outputs.upload_url }}
+          asset_path: src/nodec
+          asset_name: nodec
+          asset_content_type: application/octet-stream
